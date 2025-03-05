@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function Form() {
-  const [text, setText] = useState();
+  const [text, setText] = useState("");
 
   const convertUpper = () => {
     let newText = text.toUpperCase();
@@ -65,6 +65,18 @@ export default function Form() {
       >
         Remove extra spaces
       </button>
+      <div className="container">
+        <h2>Your Text Summary</h2>
+        <p>
+          {
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words and {text.length} characters
+        </p>
+        <p>{0.008 * text.split(" ").length} Minutes read</p>
+      </div>
     </div>
   );
 }
